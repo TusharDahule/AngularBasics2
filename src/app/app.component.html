@@ -1,0 +1,26 @@
+<div class="container">
+  <app-cockpit (serverCreated) = "onServerAdded($event)"
+               (bpCreated) = "onBluePrintAdded($event)"
+  >
+
+  </app-cockpit>
+  <hr>
+  <div class="row">
+    <div class="col-xs-12" >
+      <!-- <app-server-element *ngFor="let element of serverElements" [srvElement] = "element">
+      </app-server-element> --> <!-- Passing Javascript Object to element property using Property Binding and srvElement is alias name for element property-->
+      <button class="btn btn-primary" (click) = "onChangeFirst()">Change First Element</button>
+      <button class="btn btn-danger" (click) = "onDestroyFirst()">Destroy First Component</button>
+
+      <app-server-element  *ngFor="let element of serverElements" [srvElement] = "element"
+      [name] = "element.name"
+      > <!-- Will do same thing as above but using ng-content (content porojection) -->
+        <p #contentParagraph>
+          <strong *ngIf="element.type === 'server'" style="color: red">{{ element.content }}</strong>
+          <em *ngIf="element.type === 'blueprint'">{{ element.content }}</em>
+        </p> 
+      </app-server-element> 
+
+    </div>
+  </div>
+</div>
